@@ -25,7 +25,7 @@ typedef unsigned char uchar;
 
 DLLEXPORT void Sitin_ai_engine_init();
 
-DLLEXPORT void* Sitin_segmentation_start();
+DLLEXPORT void* Sitin_ai_segmentation_start();
 struct SegmentResult {
     uchar* buffer;
     int32_t width;
@@ -36,7 +36,7 @@ struct SegmentResult {
 DLLEXPORT struct SegmentResult Sitin_ai_segmentation_process(uchar* buffer, int32_t width, int32_t height, int32_t channels);
 DLLEXPORT void Sitin_ai_segmentation_shutdown();
 
-DLLEXPORT void* Sitin_face_detection_start();
+DLLEXPORT void* Sitin_ai_face_detection_start();
 
 typedef struct BoundingBox2d {
     float x;
