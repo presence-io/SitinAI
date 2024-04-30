@@ -116,12 +116,9 @@ spec.public_header_files = "Classes/**/*.h"
   #  the lib prefix of their name.
   #
 
-  # spec.framework  = "SomeFramework"
+  spec.vendored_libraries = "lib/*.dylib"
   spec.vendored_frameworks = "SitinAI.framework"
   spec.frameworks = "OpenCL"
-
-  # spec.library   = "iconv"
-  # spec.libraries = "iconv", "xml2"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
