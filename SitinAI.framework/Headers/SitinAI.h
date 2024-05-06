@@ -52,7 +52,7 @@ typedef struct Landmark2d {
 
 typedef struct FaceDetectionResult {
     int32_t nFaces;
-    BoundingBox2d bbox;
+    BoundingBox2d* bboxes;
     int32_t nLandmarks;
     Landmark2d* landmarks;
 } DetectionResult;

@@ -119,7 +119,17 @@ spec.public_header_files = "Classes/**/*.h"
   spec.vendored_libraries = "lib/*.dylib"
   spec.vendored_frameworks = "SitinAI.framework"
   spec.frameworks = "OpenCL"
-
+  
+  spec.vendored_libraries = [
+    "Thirdparty/opencv/libopencv_calib3d.dylib",
+    "Thirdparty/opencv/libopencv_core.dylib",
+    "Thirdparty/opencv/libopencv_features2d.dylib",
+    "Thirdparty/opencv/libopencv_highgui.dylib",
+    "Thirdparty/opencv/libopencv_imgcodecs.dylib",
+    "Thirdparty/opencv/libopencv_imgproc.dylib",
+    "Thirdparty/opencv/libopencv_video.dylib",
+    "Thirdparty/opencv/libopencv_videoio.dylib"
+  ]
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
