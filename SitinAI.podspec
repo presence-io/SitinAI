@@ -29,7 +29,6 @@ Pod::Spec.new do |spec|
   spec.homepage     = "http://EXAMPLE/SitinAI"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
-
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Licensing your code is important. See https://choosealicense.com for more info.
@@ -79,7 +78,8 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
+  spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
+  @dep_src = "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip"
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -116,22 +116,8 @@ spec.public_header_files = "Classes/**/*.h"
   #  the lib prefix of their name.
   #
 
-  spec.vendored_libraries = "lib/*.dylib"
   spec.vendored_frameworks = "SitinAI.framework"
   spec.frameworks = "OpenCL"
-  
-  spec.vendored_libraries = [
-    "Thirdparty/opencv/libopencv_calib3d.409.dylib",
-    "Thirdparty/opencv/libopencv_core.409.dylib",
-    "Thirdparty/opencv/libopencv_features2d.409.dylib",
-    "Thirdparty/opencv/libopencv_highgui.409.dylib",
-    "Thirdparty/opencv/libopencv_imgcodecs.409.dylib",
-    "Thirdparty/opencv/libopencv_imgproc.409.dylib",
-    "Thirdparty/opencv/libopencv_video.409.dylib",
-    "Thirdparty/opencv/libopencv_videoio.409.dylib",
-    "Thirdparty/opencv/libopencv_dnn.409.dylib",
-    "Thirdparty/opencv/libopencv_flann.409.dylib",
-  ]
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -143,5 +129,5 @@ spec.public_header_files = "Classes/**/*.h"
 
     #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/SitinAI.framework/Headers" , 'VALID_ARCHS' => 'x86_64'}
   # spec.dependency "JSONKit", "~> 1.4"
-
+  spec.prepare_command = "curl -L \"#{@dep_src}\" > libs.zip && unzip -o libs.zip -d ."
 end
