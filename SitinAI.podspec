@@ -121,14 +121,16 @@ spec.public_header_files = "Classes/**/*.h"
   spec.frameworks = "OpenCL"
   
   spec.vendored_libraries = [
-    "Thirdparty/opencv/libopencv_calib3d.dylib",
-    "Thirdparty/opencv/libopencv_core.dylib",
-    "Thirdparty/opencv/libopencv_features2d.dylib",
-    "Thirdparty/opencv/libopencv_highgui.dylib",
-    "Thirdparty/opencv/libopencv_imgcodecs.dylib",
-    "Thirdparty/opencv/libopencv_imgproc.dylib",
-    "Thirdparty/opencv/libopencv_video.dylib",
-    "Thirdparty/opencv/libopencv_videoio.dylib"
+    "Thirdparty/opencv/libopencv_calib3d.409.dylib",
+    "Thirdparty/opencv/libopencv_core.409.dylib",
+    "Thirdparty/opencv/libopencv_features2d.409.dylib",
+    "Thirdparty/opencv/libopencv_highgui.409.dylib",
+    "Thirdparty/opencv/libopencv_imgcodecs.409.dylib",
+    "Thirdparty/opencv/libopencv_imgproc.409.dylib",
+    "Thirdparty/opencv/libopencv_video.409.dylib",
+    "Thirdparty/opencv/libopencv_videoio.409.dylib",
+    "Thirdparty/opencv/libopencv_dnn.409.dylib",
+    "Thirdparty/opencv/libopencv_flann.409.dylib",
   ]
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
