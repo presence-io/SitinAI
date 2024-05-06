@@ -77,8 +77,8 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-
-  spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
+  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip" }
+  # spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
   @dep_src = "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip"
 
 
@@ -129,5 +129,5 @@ spec.public_header_files = "Classes/**/*.h"
 
     #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/SitinAI.framework/Headers" , 'VALID_ARCHS' => 'x86_64'}
   # spec.dependency "JSONKit", "~> 1.4"
-  spec.prepare_command = "curl -L \"#{@dep_src}\" > libs.zip && unzip -o libs.zip -d ."
+  spec.prepare_command = "curl -L \"#{spec.source[:http]}\" > libs.zip && unzip -o libs.zip -d ."
 end
