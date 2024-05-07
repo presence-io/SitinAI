@@ -77,23 +77,11 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip" }
+  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1/Frameworks.zip" }
   # spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
   @dep_src = "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip"
-
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
-  #spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  #spec.exclude_files = "Classes/Exclude"
-
-spec.public_header_files = "Classes/**/*.h"
+  spec.osx.vendored_libraries = "Frameworks/**.dylib"
+  spec.public_header_files = "Classes/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -129,5 +117,9 @@ spec.public_header_files = "Classes/**/*.h"
 
     #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/SitinAI.framework/Headers" , 'VALID_ARCHS' => 'x86_64'}
   # spec.dependency "JSONKit", "~> 1.4"
-  spec.prepare_command = "curl -L \"#{spec.source[:http]}\" > libs.zip && unzip -o libs.zip -d ."
+
+  spec.prepare_command = <<-CMD
+    curl -L \"#{spec.source[:http]}\" > Frameworks.zip && unzip -o Frameworks.zip -d .
+    rm -r Frameworks.zip
+  CMD
 end
