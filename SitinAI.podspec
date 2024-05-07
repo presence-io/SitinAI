@@ -77,7 +77,7 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1/Frameworks.zip" }
+  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip" }
   # spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
   @dep_src = "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip"
   spec.osx.vendored_libraries = "Frameworks/**.dylib"
