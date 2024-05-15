@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SitinAI"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "AI SDK for Sitin"
 
   # This description is used to generate tags and improve search results.
@@ -77,9 +77,10 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip" }
-  # spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
-  @dep_src = "https://github.com/presence-io/SitinAI/releases/download/v0.1/libs.zip"
+  # spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip" }
+  spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
+  @dep_src_x86_64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1/Frameworks.zip"
+  @dep_src_arm64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip"
   spec.osx.vendored_libraries = "Frameworks/**.dylib"
   spec.public_header_files = "Classes/**/*.h"
 
@@ -119,7 +120,13 @@ Pod::Spec.new do |spec|
   # spec.dependency "JSONKit", "~> 1.4"
 
   spec.prepare_command = <<-CMD
-    curl -L \"#{spec.source[:http]}\" > Frameworks.zip && unzip -o Frameworks.zip -d .
-    rm -r Frameworks.zip
-  CMD
+    echo "hello"
+      curl -L \"#{@dep_src_x86_64}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./x86_64
+      rm -r Frameworks.zip
+      rm -rf ./x86_64/__MACOSX
+      curl -L \"#{@dep_src_arm64}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./arm64
+      rm -r Frameworks.zip
+      rm -rf ./arm64/__MACOSX
+    CMD
+    
 end
