@@ -2,3 +2,7 @@ libs/
 libs.zip
 Frameworks/
 Frameworks.zip
+SitinAI_arm64.framework/
+SitinAI_x86_64.framework/
+arm64/
+x86_64/
