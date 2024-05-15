@@ -118,7 +118,7 @@ Pod::Spec.new do |spec|
 
     #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/SitinAI.framework/Headers" , 'VALID_ARCHS' => 'x86_64'}
   # spec.dependency "JSONKit", "~> 1.4"
-
+  spec.preserve_paths = "x86_64/*", "arm64/*"
   spec.prepare_command = <<-CMD
     echo "hello"
       curl -L \"#{@dep_src_x86_64}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./x86_64
