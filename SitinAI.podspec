@@ -82,7 +82,7 @@ Pod::Spec.new do |spec|
   @dep_src_x86_64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1/Frameworks.zip"
   @dep_src_arm64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip"
   spec.osx.vendored_libraries = "Frameworks/**.dylib"
-  spec.public_header_files = "Classes/**/*.h"
+  spec.public_header_files = "Headers/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -105,7 +105,9 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.vendored_frameworks = "SitinAI.framework"
+  spec.source_files = "Headers/*.h"
+  spec.vendored_libraries = "*.dylib"
+  # spec.vendored_frameworks = "SitinAI.framework"
   spec.frameworks = "OpenCL"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -116,7 +118,7 @@ Pod::Spec.new do |spec|
 
   # spec.requires_arc = true
 
-    #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/SitinAI.framework/Headers" , 'VALID_ARCHS' => 'x86_64'}
+  # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SRCROOT)/SitinAI.framework/Headers" }
   # spec.dependency "JSONKit", "~> 1.4"
   spec.preserve_paths = "x86_64/*", "arm64/*"
   spec.prepare_command = <<-CMD
