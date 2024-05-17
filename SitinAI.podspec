@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SitinAI"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "AI SDK for Sitin"
 
   # This description is used to generate tags and improve search results.
@@ -79,9 +79,7 @@ Pod::Spec.new do |spec|
   #
   # spec.source = { http: "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip" }
   spec.source = { :git => "git@github.com:presence-io/SitinAI.git", :tag => "0.1.0" }
-  @dep_src_x86_64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1/Frameworks.zip"
-  @dep_src_arm64 = "https://github.com/presence-io/SitinAI/releases/download/v0.1.1/Frameworks.zip"
-  spec.osx.vendored_libraries = "Frameworks/**.dylib"
+  @dep_libs_source = "https://github.com/presence-io/SitinAI/releases/download/v0.2.0/Frameworks.zip"
   spec.public_header_files = "Headers/*.h"
 
 
@@ -106,7 +104,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.source_files = "Headers/*.h"
-  spec.vendored_libraries = "*.dylib"
+  spec.vendored_libraries = "*.dylib", "Frameworks/**.dylib"
   # spec.vendored_frameworks = "SitinAI.framework"
   spec.frameworks = "OpenCL"
 
@@ -120,15 +118,10 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SRCROOT)/SitinAI.framework/Headers" }
   # spec.dependency "JSONKit", "~> 1.4"
-  spec.preserve_paths = "x86_64/*", "arm64/*"
+  spec.preserve_paths = "Frameworks/*", "arm64/*"
   spec.prepare_command = <<-CMD
-    echo "hello"
-      curl -L \"#{@dep_src_x86_64}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./x86_64
+      curl -L \"#{@dep_libs_source}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./
       rm -r Frameworks.zip
-      rm -rf ./x86_64/__MACOSX
-      curl -L \"#{@dep_src_arm64}\" > Frameworks.zip && unzip -o Frameworks.zip -d ./arm64
-      rm -r Frameworks.zip
-      rm -rf ./arm64/__MACOSX
     CMD
     
 end
