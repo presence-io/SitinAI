@@ -30,3 +30,7 @@ for file in "$dir1"/*; do
         cp "$file" ./Frameworks
     fi
 done
+
+dylibbundler -od -b -x libSitinAI.dylib  -d ./Frameworks/ -p @executable_path/../Frameworke
+zip -r Frameworks.zip Frameworks -x "*__MACOSX*" "*\.DS_Store"
+install_name_tool -id @rpath/libSitinAI.dylib libSitinAI.dylib
