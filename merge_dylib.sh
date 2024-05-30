@@ -25,12 +25,26 @@ for file in "$dir1"/*; do
     filename=$(basename "$file")
     if [ -e "$dir2/$filename" ]; then
         echo "File '$filename' exists in both directories."
-        lipo -create -output "./Frameworks/$filename" "$dir1/$filename" "$dir2/$filename"
+        if [ ! -e "./Frameworks/$filename" ]; then
+            lipo -create -output "./Frameworks/$filename" "$dir1/$filename" "$dir2/$filename"
+        fi
     else
         cp "$file" ./Frameworks
     fi
 done
 
-dylibbundler -od -b -x libSitinAI.dylib  -d ./Frameworks/ -p @executable_path/../Frameworke
-zip -r Frameworks.zip Frameworks -x "*__MACOSX*" "*\.DS_Store"
-install_name_tool -id @rpath/libSitinAI.dylib libSitinAI.dylib
+for file in "$dir2"/*; do
+    filename=$(basename "$file")
+    if [ -e "$dir1/$filename" ]; then
+        echo "File '$filename' exists in both directories."
+        if [ ! -e "./Frameworks/$filename" ]; then
+            lipo -create -output "./Frameworks/$filename" "$dir1/$filename" "$dir2/$filename"
+        fi
+    else
+        cp "$file" ./Frameworks
+    fi
+done
+
+#dylibbundler -od -b -x libSitinAI.dylib  -d ./Frameworks/ -p @executable_path/../Frameworke
+#zip -r Frameworks.zip Frameworks -x "*__MACOSX*" "*\.DS_Store"
+#install_name_tool -id @rpath/libSitinAI.dylib libSitinAI.dylib
